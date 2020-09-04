@@ -42,10 +42,7 @@ function App() {
         <Global styles={styles} />
         <Settings />
         <Switch>
-          <Route
-            path={"/grid-composition/colums=/:colums/rows=/:rows"}
-            component={Main}
-          />
+          <Route path={"/grid/:columns/:rows"} component={Main} />
         </Switch>
       </Layout>
     </Router>

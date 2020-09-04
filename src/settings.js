@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
 
 const SettingsStyled = styled.div`
@@ -27,6 +28,7 @@ const SettingsStyled = styled.div`
   }
   button {
     border: none;
+    outline: none;
     cursor: pointer;
     margin: 20px 0;
     padding: 12px;
@@ -42,10 +44,10 @@ const SettingsStyled = styled.div`
 function Settings() {
   const [rows, setRows] = useState("");
   const [columns, setColumns] = useState("");
-
+  const history = useHistory();
   const submit = (event) => {
     event.preventDefault();
-    return console.log("values", rows, columns);
+    history.push(`/grid/${columns}/${rows}`);
   };
   return (
     <SettingsStyled>
