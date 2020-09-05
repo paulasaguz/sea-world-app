@@ -1,7 +1,7 @@
 import React from "react";
 import useToggle from "./hooks/useToggle";
 import styled from "@emotion/styled";
-import { css } from "@babel/core";
+import { css } from "@emotion/core";
 
 const activeStyles = ({ active }) =>
   active &&
