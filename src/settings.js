@@ -45,6 +45,7 @@ function Settings() {
   const [rows, setRows] = useState("");
   const [columns, setColumns] = useState("");
   const history = useHistory();
+
   const submit = (event) => {
     event.preventDefault();
     history.push(`/grid/${columns}/${rows}`);
@@ -62,7 +63,7 @@ function Settings() {
         <label>Columns</label>
         <input
           onChange={(e) => setColumns(e.target.value)}
-          placeholder="Colums"
+          placeholder="Columns"
           type="text"
         />
         <button>Crear</button>

@@ -1,10 +1,9 @@
 import React from "react";
-import useToggle from "./hooks/useToggle";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
 const activeStyles = ({ active }) =>
-  active &&
+  active === "1" &&
   css`
     background-color: var(--green);
     &:hover {
@@ -20,12 +19,10 @@ const CellStyled = styled.div`
   ${activeStyles}
 `;
 
-function Cell() {
-  const [active, setActive] = useToggle(false);
-
+function Cell({ isAnIsland, column, row, handleClick }) {
   return (
-    <CellStyled active={active} onClick={setActive}>
-      Paula
+    <CellStyled active={isAnIsland} onClick={handleClick}>
+      <p>{isAnIsland}</p>[{row}][{column}]
     </CellStyled>
   );
 }
