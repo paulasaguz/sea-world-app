@@ -1,13 +1,23 @@
 import React from "react";
 import useToggle from "./hooks/useToggle";
 import styled from "@emotion/styled";
+import { css } from "@babel/core";
+
+const activeStyles = ({ active }) =>
+  active &&
+  css`
+    background-color: var(--green);
+    &:hover {
+      border: 1px dashed brown;
+    }
+  `;
 
 const CellStyled = styled.div`
   border: 1px solid var(--dark-blue);
-  background-color: ${({ active }) => active && "var(--green)"};
   &:hover {
     border: 1px dashed white;
   }
+  ${activeStyles}
 `;
 
 function Cell() {
