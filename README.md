@@ -1,27 +1,21 @@
 ## Welcome to Sea World App
 
-##`Challenge:`
+### Challenge:
 In this challenge, we want you to create a web application with React in which the user will be
 presented with a small sea world where the user can build islands.
 This tiny world will be represented by a grid that starts as all sea and then the user can click on
 the world and add or remove land and create tiny islands. The user will need to be able to
 change the size of this tiny world and have data displayed about this world.
 
-##`Description:`
+### `Description:`
 
-![Preview](https://raw.github.com/paulasaguz/sea-world-app/develop/src/assets/config.png)
+<img src="src/assets/grid.png" alt="My cool logo"/>
 
 In this app you will find a fun game to build a grid with the columns and rows that are required in the /config path, from there you will be redirected to our beautiful sea map where you can create all the islands that you want, you will also find a counter of the existing islands.
 
-![Preview](https://raw.github.com/paulasaguz/sea-world-app/develop/src/assets/grid.png)
+<img src="src/assets/config.png" alt="My cool logo"/>
 
 if you want to change the distribution between rows and columns you can do it from the path `/grid/columns=/{typeTheColumnsHere}/rows=/{typeTheRowsHere}`
-
-##`Descripcion:`
-
-En esta app encontrarás un juego divertido para construir un grid con las columnas y filas que desees en la ruta /config, a partir de allí serás direccionado a nuestro lindo plano del mar donde podrás crear todas las islas que quieras, y donde además encontrarás un contador de las islas existentes.
-
-si deseas cambiar la distribucion entre filas y columnas podras hacerlo apartir de la ruta `/grid/columns=/{EscribeAquiColumnas}/rows=/{EscribeAquiFilas}`
 
 In the project directory, you can run:
 
