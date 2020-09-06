@@ -14,6 +14,10 @@ const logoStyles = css`
   }
 `;
 
+/**
+ * Render Logo compoent
+ * @returns A image of the sea world logo
+ */
 function Logo() {
   return <img src={SeaWorldImage} alt="logo" css={logoStyles} />;
 }

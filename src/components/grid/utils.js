@@ -15,6 +15,13 @@ export function buildArray2D(cols, rows) {
   return arr;
 }
 
+/**
+ * This function represent the algoritm for find the number of Islands
+ * in this part is finding the cells with a 1 value
+ * after this use recursion to find which number is in the nearby positions
+ * @param {Array} grid - represent the current matrix of the sea world.
+ * @returns The number of Islands
+ */
 export function islandsCounter(grid) {
   let count = 0;
   for (let i = 0; i < grid.length; i++) {
@@ -28,6 +35,14 @@ export function islandsCounter(grid) {
   return count;
 }
 
+/**
+ * this use recursion to find which number is in the nearby positions
+ * top, right, left and bottom
+ * @param {Array} grid - represent the current matrix of the sea world.
+ * @param {Array} x - represent the position i or X value.
+ * @param {Array} y - represent the position j or Y value.
+ * @returns The number of Islands
+ */
 function searcher(grid, x, y) {
   const row = grid.length,
     col = grid[x].length;
@@ -39,6 +54,11 @@ function searcher(grid, x, y) {
   if (y !== col - 1) searcher(grid, x, y + 1);
 }
 
+/**
+ * This util create a clon or copy 2D arrays
+ * @param {Array} grid - represent the current matrix of the sea world.
+ * @returns A new matrix with the same values
+ */
 export function createClone(grid) {
   return JSON.parse(JSON.stringify(grid));
 }

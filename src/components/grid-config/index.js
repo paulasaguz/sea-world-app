@@ -32,7 +32,7 @@ const GridConfigFormStyled = styled.div`
 `;
 
 /**
- * Render the configuration form in the sidebar with help icons,
+ * Render the configuration form in the GridConfigForm with help icons,
  * receives the numerical value of rows and columns to build the main grid,
  * and send these values to the grid route.
  * @returns React component

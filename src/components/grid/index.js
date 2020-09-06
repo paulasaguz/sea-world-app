@@ -6,7 +6,7 @@ import Cell from "./cell";
 import Counter from "./counter";
 import { buildArray2D, islandsCounter, createClone } from "./utils";
 
-const MainStyled = styled.div`
+const GridStyled = styled.div`
   position: relative;
   display: grid;
   height: 100vh;
@@ -19,8 +19,10 @@ const MainStyled = styled.div`
 `;
 
 /**
- *
- * @returns
+ * This component render the principal grid with the route columns and rows parameters
+ * and build a grid based in a javascript matrix with their respective positions like a rows and columns
+ * here the toggle logic is included, and change the of cell from Island to Water
+ * @returns Component with the dinamical grid
  */
 function Grid() {
   const { columns, rows } = useParams();
@@ -42,7 +44,7 @@ function Grid() {
   const num = islandsCounter(superClone);
 
   return (
-    <MainStyled columns={columns} rows={rows}>
+    <GridStyled columns={columns} rows={rows}>
       {grid.map((row, indexRow) => {
         return row.map((column, indexColumn) => {
           return (
@@ -56,7 +58,7 @@ function Grid() {
         });
       })}
       <Counter num={num} />
-    </MainStyled>
+    </GridStyled>
   );
 }
 

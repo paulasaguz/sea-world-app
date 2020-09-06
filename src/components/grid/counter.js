@@ -18,6 +18,11 @@ const CounterStyled = styled.div`
   }
 `;
 
+/**
+ * This component render the number of Islands on top of the app.
+ * @param {Number} props.num - This number is the Island counter.
+ * @returns React component.
+ */
 function Counter({ num }) {
   return (
     <CounterStyled>
