@@ -9,11 +9,11 @@ change the size of this tiny world and have data displayed about this world.
 
 ##`Description:`
 
-![Preview](https://raw.githubusercontent.com/paulasaguz/sea-world-app/develop/src/assets/config.png)
+![Preview](https://raw.github.com/paulasaguz/sea-world-app/develop/src/assets/config.png)
 
 In this app you will find a fun game to build a grid with the columns and rows that are required in the /config path, from there you will be redirected to our beautiful sea map where you can create all the islands that you want, you will also find a counter of the existing islands.
 
-![Preview](https://raw.githubusercontent.com/paulasaguz/sea-world-app/develop/src/assets/grid.png)
+![Preview](https://raw.github.com/paulasaguz/sea-world-app/develop/src/assets/grid.png)
 
 if you want to change the distribution between rows and columns you can do it from the path `/grid/columns=/{typeTheColumnsHere}/rows=/{typeTheRowsHere}`
 
