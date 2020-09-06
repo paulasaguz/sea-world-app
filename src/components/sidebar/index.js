@@ -64,7 +64,7 @@ function Sidebar() {
         <InputStyled
           onChange={(e) => setRows(e.target.value)}
           placeholder="rows"
-          type="text"
+          type="number"
         />
         <label>
           Columns
@@ -73,7 +73,7 @@ function Sidebar() {
         <InputStyled
           onChange={(e) => setColumns(e.target.value)}
           placeholder="Columns"
-          type="text"
+          type="number"
         />
         <ButtonStyled>Create</ButtonStyled>
       </form>
