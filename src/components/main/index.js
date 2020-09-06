@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import useToggle from "./hooks/useToggle";
 import styled from "@emotion/styled";
 import Cell from "./cell";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const MainStyled = styled.div`
   width: 85%;
