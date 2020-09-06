@@ -2,12 +2,23 @@ import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
-const activeStyles = ({ active }) =>
+const activeStylesGreen = ({ active, color }) =>
   active === "1" &&
+  color === "0" &&
   css`
     background-color: var(--green);
     &:hover {
       border: 2px dashed var(--brown);
+    }
+  `;
+
+const activeStyles = ({ active, color }) =>
+  active === "1" &&
+  color === "1" &&
+  css`
+    background-color: var(--light-brown);
+    &:hover {
+      border: 2px dashed var(--green);
     }
   `;
 
@@ -18,6 +29,7 @@ const CellStyled = styled.div`
     border: 1px dashed var(--white);
   }
   ${activeStyles}
+  ${activeStylesGreen}
 `;
 
 /**
@@ -28,9 +40,10 @@ const CellStyled = styled.div`
  * @param {function} props.handleClick - toggle that change the state of the cell from Water to Island.
  * @returns Component that render each cell of the grid.
  */
-function Cell({ isAnIsland, column, row, handleClick }) {
+function Cell({ color, isAnIsland, column, row, handleClick }) {
+  const colot = color.toString();
   return (
-    <CellStyled active={isAnIsland} onClick={handleClick}>
+    <CellStyled color={colot} active={isAnIsland} onClick={handleClick}>
       <p>{isAnIsland}</p>
       <span data-testid="positions">
         [{row}][{column}]

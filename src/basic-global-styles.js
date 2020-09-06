@@ -10,6 +10,7 @@ export const styles = css`
     --light-blue: #e1e9f1;
     --white: #ffffff;
     --brown: #844204;
+    --light-brown: #ad7759;
     --black: rgba(0, 0, 0, 0.8);
   }
   body {
