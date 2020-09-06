@@ -17,6 +17,13 @@ In this app you will find a fun game to build a grid with the columns and rows t
 
 if you want to change the distribution between rows and columns you can do it from the path `/grid/columns=/{typeTheColumnsHere}/rows=/{typeTheRowsHere}`
 
+### `Features`
+
+- Create the sea grid with a dinamical values of rows and columns
+- Build Islands when the user click on the cell
+- Island counter following the instructions
+- Random color for the Islands 
+
 In the project directory, you can run:
 
 ### `yarn start`
