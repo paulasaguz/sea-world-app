@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import Cell from "./cell";
@@ -17,7 +17,9 @@ const GridStyled = styled.div`
       1fr
     );
 `;
-
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 /**
  * This component render the principal grid with the route columns and rows parameters
  * and build a grid based in a javascript matrix with their respective positions like a rows and columns
@@ -25,9 +27,10 @@ const GridStyled = styled.div`
  * @returns Component with the dinamical grid
  */
 function Grid() {
-  const { columns, rows } = useParams();
-  const cols = parseInt(columns);
-  const rws = parseInt(rows);
+  let query = useQuery();
+
+  const cols = parseInt(query.get("columns"));
+  const rws = parseInt(query.get("rows"));
 
   const [grid, setGrid] = useState(buildArray2D(cols, rws));
 
@@ -44,7 +47,7 @@ function Grid() {
   const num = islandsCounter(superClone);
 
   return (
-    <GridStyled columns={columns} rows={rows}>
+    <GridStyled columns={cols} rows={rws}>
       {grid.map((row, indexRow) => {
         return row.map((column, indexColumn) => {
           return (

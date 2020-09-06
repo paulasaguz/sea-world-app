@@ -11,9 +11,8 @@ function App() {
     <Router>
       <Global styles={styles} />
       <Switch>
-        <Route path={"/config"} component={GridConfigForm} />
-        <Route path={"/grid/columns=/:columns/rows=/:rows"} component={Grid} />
-        <Redirect to="/config" />
+        <Route exact path={"/"} component={GridConfigForm} />
+        <Route exact path={"/grid"} component={Grid} />
       </Switch>
     </Router>
   );

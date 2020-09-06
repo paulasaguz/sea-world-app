@@ -44,7 +44,7 @@ function GridConfigForm() {
 
   const submit = (event) => {
     event.preventDefault();
-    history.push(`/grid/columns=/${columns}/rows=/${rows}`);
+    history.push(`/grid?columns=${columns}&rows=${rows}`);
   };
   return (
     <GridConfigFormStyled>
