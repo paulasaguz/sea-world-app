@@ -18,11 +18,12 @@ In this app you will find a fun game to build a grid with the columns and rows t
 
 if you want to change the distribution between rows and columns you can do it from the path `http://localhost:3000/grid?columns={columnValue}&rows={rowValue}`
 
-### `Descripcion:`
+### `Features`
 
-En esta app encontrarás un juego divertido para construir un grid con las columnas y filas que desees en la ruta /config, a partir de allí serás direccionado a nuestro lindo plano del mar donde podrás crear todas las islas que quieras, y donde además encontrarás un contador de las islas existentes.
-
-si deseas cambiar la distribucion entre filas y columnas podras hacerlo apartir de la ruta `/grid/columns=/{EscribeAquiColumnas}/rows=/{EscribeAquiFilas}`
+- Create the sea grid with a dinamical values of rows and columns
+- Build Islands when the user click on the cell
+- Island counter following the instructions
+- Random color for the Islands
 
 In the project directory, you can run:
 
