@@ -1,11 +1,17 @@
 {
-  "presets": [
-    "@emotion/babel-preset-css-prop",
-    {
-      "autoLabel": true,
-      "labelFormat": "[local]",
-      "useBuiltIns": false,
-      "throwIfNamespace": true
+  "plugins": ["dynamic-import-node"],
+  "env": {
+    "production": {
+      "presets": ["react-app"],
+      "plugins": []
+    },
+    "development": {
+      "presets": ["react-app", "@emotion/babel-preset-css-prop"],
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "test": {
+      "presets": ["react-app"],
+      "plugins": ["dynamic-import-node"]
     }
-  ]
+  }
 }

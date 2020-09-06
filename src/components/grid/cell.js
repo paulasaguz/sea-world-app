@@ -31,7 +31,10 @@ const CellStyled = styled.div`
 function Cell({ isAnIsland, column, row, handleClick }) {
   return (
     <CellStyled active={isAnIsland} onClick={handleClick}>
-      <p>{isAnIsland}</p>[{row}][{column}]
+      <p>{isAnIsland}</p>
+      <span data-testid="positions">
+        [{row}][{column}]
+      </span>
     </CellStyled>
   );
 }
