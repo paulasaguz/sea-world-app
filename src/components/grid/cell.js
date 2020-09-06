@@ -1,24 +1,13 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
 const activeStylesGreen = ({ active, color }) =>
   active === "1" &&
-  color === "0" &&
   css`
-    background-color: var(--green);
+    background-color: var(--${color});
     &:hover {
       border: 2px dashed var(--brown);
-    }
-  `;
-
-const activeStyles = ({ active, color }) =>
-  active === "1" &&
-  color === "1" &&
-  css`
-    background-color: var(--light-brown);
-    &:hover {
-      border: 2px dashed var(--green);
     }
   `;
 
@@ -28,10 +17,13 @@ const CellStyled = styled.div`
   &:hover {
     border: 1px dashed var(--white);
   }
-  ${activeStyles}
   ${activeStylesGreen}
 `;
 
+const ramdomColor = () => {
+  return Math.round(Math.random() * (1 - 0) + 0);
+};
+const colors = ["green", "light-brown"];
 /**
  * This component that represent each cell of the principal grid.
  * @param {String} props.isAnIsland - this value represent "0" or "1", and allows change to the active style.
@@ -40,10 +32,12 @@ const CellStyled = styled.div`
  * @param {function} props.handleClick - toggle that change the state of the cell from Water to Island.
  * @returns Component that render each cell of the grid.
  */
-function Cell({ color, isAnIsland, column, row, handleClick }) {
-  const colot = color.toString();
+function Cell({ isAnIsland, column, row, handleClick }) {
+  const color = useMemo(() => colors[ramdomColor()], [isAnIsland]);
+  // const color = colors[ramdomColor()];
+
   return (
-    <CellStyled color={colot} active={isAnIsland} onClick={handleClick}>
+    <CellStyled color={color} active={isAnIsland} onClick={handleClick}>
       <p>{isAnIsland}</p>
       <span data-testid="positions">
         [{row}][{column}]

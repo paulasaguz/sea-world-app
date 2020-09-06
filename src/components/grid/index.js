@@ -30,7 +30,6 @@ function Grid() {
   const rws = parseInt(rows);
 
   const [grid, setGrid] = useState(buildArray2D(cols, rws));
-  const [color, setColor] = useState(0);
 
   const setValue = (row, column) => {
     let gridClone = createClone(grid);
@@ -39,10 +38,6 @@ function Grid() {
       gridClone[row][column] = "0";
     }
     setGrid(gridClone);
-  };
-
-  const ramdomColor = () => {
-    setColor(Math.round(Math.random() * (1 - 0) + 0));
   };
 
   const superClone = createClone(grid);
@@ -54,14 +49,10 @@ function Grid() {
         return row.map((column, indexColumn) => {
           return (
             <Cell
-              handleClick={() => {
-                setValue(indexRow, indexColumn);
-                ramdomColor();
-              }}
+              handleClick={() => setValue(indexRow, indexColumn)}
               isAnIsland={column}
               column={indexColumn}
               row={indexRow}
-              color={color}
             />
           );
         });
