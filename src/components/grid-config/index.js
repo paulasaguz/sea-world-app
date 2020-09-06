@@ -6,8 +6,9 @@ import ButtonStyled from "../../ui-components/button";
 import InputStyled from "../../ui-components/input";
 import HelpText from "./help-text";
 import Logo from "./logo";
+import Wrapper from "../../ui-components/wrapper";
 
-const SidebarStyled = styled.div`
+const GridConfigFormStyled = styled.div`
   color: white;
   height: 100vh;
   position: relative;
@@ -30,24 +31,13 @@ const SidebarStyled = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 700px;
-  @media (max-width: 768px) {
-    max-width: 400px;
-  }
-  @media (max-width: 480px) {
-    max-width: 300px;
-  }
-`;
-
 /**
  * Render the configuration form in the sidebar with help icons,
  * receives the numerical value of rows and columns to build the main grid,
  * and send these values to the grid route.
  * @returns React component
  */
-function Sidebar() {
+function GridConfigForm() {
   const [rows, setRows] = useState("");
   const [columns, setColumns] = useState("");
   const history = useHistory();
@@ -57,7 +47,7 @@ function Sidebar() {
     history.push(`/grid/columns=/${columns}/rows=/${rows}`);
   };
   return (
-    <SidebarStyled>
+    <GridConfigFormStyled>
       <Wrapper>
         <Logo />
         <h2 className="settings-title">
@@ -86,8 +76,8 @@ function Sidebar() {
           <ButtonStyled>Create</ButtonStyled>
         </form>
       </Wrapper>
-    </SidebarStyled>
+    </GridConfigFormStyled>
   );
 }
 
-export default Sidebar;
+export default GridConfigForm;

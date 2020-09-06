@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./components/sidebar";
+import GridConfigForm from "./components/grid-config";
 import { Global } from "@emotion/core";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Grid from "./components/grid";
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Global styles={styles} />
       <Switch>
-        <Sidebar path={"/config"} />
+        <Route path={"/config"} component={GridConfigForm} />
         <Route path={"/grid/columns=/:columns/rows=/:rows"} component={Grid} />
         <Redirect to="/config" />
       </Switch>
