@@ -6,6 +6,10 @@ const LayoutStyled = styled.div`
   justify-content: space-between;
 `;
 
+/**
+ * Container with the principal distrubution of the components in the layout.
+ * @returns Display style to the components inside of this component.
+ */
 function Layout({ children }) {
   return <LayoutStyled>{children}</LayoutStyled>;
 }

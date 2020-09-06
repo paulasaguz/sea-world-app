@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
-import Cell from "./cell";
 import { useParams } from "react-router-dom";
+import styled from "@emotion/styled";
+
+import Cell from "./cell";
+import { buildArray2D } from "./utils";
 
 const MainStyled = styled.div`
   width: 85%;
@@ -14,14 +16,10 @@ const MainStyled = styled.div`
     );
 `;
 
-function buildArray2D(cols, rows) {
-  const arr = new Array(rows).fill("0");
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = new Array(cols).fill("0");
-  }
-  return arr;
-}
-
+/**
+ *
+ * @returns
+ */
 function Main() {
   const { columns, rows } = useParams();
   const cols = parseInt(columns);

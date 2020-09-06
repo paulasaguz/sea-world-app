@@ -12,10 +12,10 @@ function App() {
     <Router>
       <Global styles={styles} />
       <Layout>
-        <Sidebar />
         <Switch>
           <Route path={"/grid/:columns/:rows"} component={Main} />
         </Switch>
+        <Sidebar />
       </Layout>
     </Router>
   );

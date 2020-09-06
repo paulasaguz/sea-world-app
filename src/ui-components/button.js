@@ -10,10 +10,14 @@ const ButtonStyled = styled.button`
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1.5px;
+  font-size: 16px;
   color: white;
   background: linear-gradient(to right, var(--rose), var(--orange));
   &:hover {
     background: var(--blue);
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
   }
 `;
 

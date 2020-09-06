@@ -1,24 +1,35 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
+
 import ButtonStyled from "../../ui-components/button";
 import InputStyled from "../../ui-components/input";
-import { ReactComponent as HelpIcon } from "../../assets/icons/help-icon.svg";
+import HelpText from "./help-text";
+import Logo from "./logo";
 
 const SidebarStyled = styled.div`
-  background-color: black;
+  background-color: var(--black);
   height: 100vh;
   width: 15%;
+  min-width: 90px;
   color: white;
   padding: 0 20px;
+  position: relative;
   .settings-title {
-    text-align: center;
+    margin: 30px 0 40px;
+    color: var(--blue);
   }
   .settings-form {
     display: flex;
     flex-direction: column;
     label {
       margin-left: 10px;
+    }
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+    .settings-title {
+      margin: 10px 0;
     }
   }
 `;
@@ -40,16 +51,15 @@ function Sidebar() {
   };
   return (
     <SidebarStyled>
+      <Logo />
       <h2 className="settings-title">
-        Grid controls
-        <span>
-          <HelpIcon />
-        </span>
+        Grid controls{" "}
+        <HelpText text="Aqui podras configurar los valores de tu grid, o cambiando el value en la ruta /grid/columns/rows" />
       </h2>
       <form className="settings-form" onSubmit={submit}>
         <label>
           Rows
-          <HelpIcon />
+          <HelpText text="Digita el numero de filas" />
         </label>
         <InputStyled
           onChange={(e) => setRows(e.target.value)}
@@ -58,14 +68,14 @@ function Sidebar() {
         />
         <label>
           Columns
-          <HelpIcon />
+          <HelpText text="Digita el numero de columnas" />
         </label>
         <InputStyled
           onChange={(e) => setColumns(e.target.value)}
           placeholder="Columns"
           type="text"
         />
-        <ButtonStyled>Crear</ButtonStyled>
+        <ButtonStyled>Create</ButtonStyled>
       </form>
     </SidebarStyled>
   );
