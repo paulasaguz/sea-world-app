@@ -16,9 +16,6 @@ const ButtonStyled = styled.button`
   &:hover {
     background: var(--blue);
   }
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
 `;
 
 export default ButtonStyled;

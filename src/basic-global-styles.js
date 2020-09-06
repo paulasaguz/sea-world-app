@@ -36,8 +36,5 @@ export const styles = css`
     letter-spacing: 1px;
     font-size: 22px;
     text-align: center;
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
   }
 `;
