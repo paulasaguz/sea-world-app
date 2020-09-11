@@ -1,6 +1,13 @@
-export const setPokemonList = (pokemonList) => {
+export const setPokemonList = (latestBlock) => {
   return {
-    type: "POKEMON_LIST",
-    payload: { pokemonList },
+    type: "LATEST_BLOCK",
+    payload: { latestBlock },
+  };
+};
+
+export const setTransactions = (transactions) => {
+  return {
+    type: "TRANSACTION_BLOCK",
+    payload: transactions,
   };
 };

@@ -3,7 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "@emotion/styled";
 
-import { setPokemonList } from "../../redux/actions";
+import { setPokemonList, setTransactions } from "../../redux/actions";
 import Cell from "./cell";
 import Counter from "./counter";
 import { buildArray2D, islandsCounter, createClone } from "./utils";
@@ -31,27 +31,48 @@ function useQuery() {
 function Grid() {
   let query = useQuery();
   const dispatch = useDispatch();
-  const pokeList = useSelector((state) => state.pokemonList);
-  console.log("pokeList", pokeList);
+  const lastestBlockState = useSelector((state) => state.latestBlock);
+  // const hash = lastestBlockState.hash;
+  const transactionsList = useSelector((state) => state.transactions);
 
+  const hash = lastestBlockState.hash;
   const cols = parseInt(query.get("columns"));
   const rws = parseInt(query.get("rows"));
 
   const [grid, setGrid] = useState(buildArray2D(cols, rws));
 
-  const id = 25;
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    fetch(`https://blockchain.info/latestblock?cors=true`)
       .then((response) => {
         return response.json();
       })
-      .then((pokemonList) => {
-        dispatch(setPokemonList(pokemonList));
+      .then((LatestBlock) => {
+        dispatch(setPokemonList(LatestBlock));
       })
-      .catch(() => {
-        console.log("hubo un error");
+      .catch((error) => {
+        console.log("hubo un error", error);
       });
   }, [dispatch]);
+
+  useEffect(() => {
+    if (hash) {
+      fetch(`https://blockchain.info/rawblock/${hash}?cors=true`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((transactions) => {
+          console.log("tr", transactions);
+          dispatch(setTransactions(transactions));
+        })
+        .catch((error) => {
+          console.log("hubo un error en transactions", error);
+        });
+    }
+  }, [hash]);
+
+  const transactionsGrid = transactionsList && transactionsList;
+  const newHash = [...transactionsList];
+  console.log(transactionsGrid);
 
   const setValue = (row, column) => {
     let gridClone = createClone(grid);
@@ -65,20 +86,25 @@ function Grid() {
   const superClone = createClone(grid);
   const num = islandsCounter(superClone);
 
+  if (!transactionsGrid.length) {
+    return <p>Estoy Cargando...</p>;
+  }
   return (
     <GridStyled columns={cols} rows={rws}>
-      {grid.map((row, indexRow) => {
-        return row.map((column, indexColumn) => {
-          return (
-            <Cell
-              handleClick={() => setValue(indexRow, indexColumn)}
-              isAnIsland={column}
-              column={indexColumn}
-              row={indexRow}
-            />
-          );
-        });
-      })}
+      {transactionsGrid &&
+        transactionsGrid.slice(0, 4).map((row, indexRow) => {
+          console.log("row", row);
+          return [...row.hash].slice(0, 19).map((column, indexColumn) => {
+            return (
+              <Cell
+                handleClick={() => setValue(indexRow, indexColumn)}
+                isAnIsland={column}
+                column={indexColumn}
+                row={indexRow}
+              />
+            );
+          });
+        })}
       <Counter num={num} />
     </GridStyled>
   );

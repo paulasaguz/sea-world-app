@@ -2,12 +2,11 @@ import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
-const activeStylesGreen = ({ active, color }) =>
-  active === "1" &&
+const activeStylesGreen = ({ color }) =>
   css`
     background-color: var(--${color});
     &:hover {
-      border: 2px dashed var(--brown);
+      border: 2px dashed var(--${color});
     }
   `;
 
@@ -33,12 +32,15 @@ const colors = ["green", "light-brown"];
  * @returns Component that render each cell of the grid.
  */
 function Cell({ isAnIsland, column, row, handleClick }) {
-  const color = useMemo(() => colors[ramdomColor()], [isAnIsland]);
+  console.log(isAnIsland);
+  const c = parseInt(isAnIsland, 10);
+  const color = useMemo(() => (c ? "green" : "light-brown"), [isAnIsland]);
   // const color = colors[ramdomColor()];
 
   return (
     <CellStyled color={color} active={isAnIsland} onClick={handleClick}>
       <p>{isAnIsland}</p>
+      {color}
       <span data-testid="positions">
         [{row}][{column}]
       </span>

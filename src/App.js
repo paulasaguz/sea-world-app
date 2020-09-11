@@ -10,7 +10,8 @@ import { styles } from "./basic-global-styles";
 import reducer from "./redux/reducer";
 
 const initialState = {
-  pokemonList: [],
+  latestBlock: [],
+  transactions: [],
 };
 
 const store = createStore(reducer, initialState);
