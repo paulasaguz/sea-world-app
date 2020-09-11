@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "@emotion/styled";
 
+import { setPokemonList } from "../../redux/actions";
 import Cell from "./cell";
 import Counter from "./counter";
 import { buildArray2D, islandsCounter, createClone } from "./utils";
@@ -28,11 +30,28 @@ function useQuery() {
  */
 function Grid() {
   let query = useQuery();
+  const dispatch = useDispatch();
+  const pokeList = useSelector((state) => state.pokemonList);
+  console.log("pokeList", pokeList);
 
   const cols = parseInt(query.get("columns"));
   const rws = parseInt(query.get("rows"));
 
   const [grid, setGrid] = useState(buildArray2D(cols, rws));
+
+  const id = 25;
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((pokemonList) => {
+        dispatch(setPokemonList(pokemonList));
+      })
+      .catch(() => {
+        console.log("hubo un error");
+      });
+  }, [dispatch]);
 
   const setValue = (row, column) => {
     let gridClone = createClone(grid);
